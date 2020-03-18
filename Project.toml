@@ -1,0 +1,13 @@
+name = "SyslogLogging"
+uuid = "0c4b0c42-68ec-11ea-3bc9-e7fb6e00ea0f"
+keywords = ["syslog", "logger"]
+authors = ["Tanmay Mohapatra <tanmaykm@gmail.com>"]
+license = "MIT"
+desc = "Syslog Logger for Julia"
+version = "0.1.0"
+
+[deps]
+Syslogs = "cea106d9-e007-5e6c-ad93-58fe2094e9c4"
+
+[compat]
+julia = "≥ 1.0.0"
