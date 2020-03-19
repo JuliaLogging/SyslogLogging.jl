@@ -1,4 +1,4 @@
-The OpenIDConnect.jl package is licensed under the MIT "Expat" License:
+The SyslogLogging.jl package is licensed under the MIT "Expat" License:
 
 > Copyright (c) 2020-2021: Julia Computing Inc.
 >
