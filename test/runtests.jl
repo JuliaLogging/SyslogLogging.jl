@@ -1,6 +1,7 @@
 using SyslogLogging
 using Test
 using Logging
+using Sockets
 
 function do_logging()
     @debug("hello syslog")
@@ -29,5 +30,13 @@ function test_multiple_loggers()
     end
 end
 
+function test_remote_syslog_constructor()
+    for host in ("127.0.0.1", ip"127.0.0.1", "localhost")
+        @test_throws Base.IOError SyslogLogger("syslogloggerremote", host=host, port=10000, tcp=true) # ECONNREFUSED
+        SyslogLogger("syslogloggerremote", host=host, port=10000, tcp=false)
+    end
+end
+
+test_remote_syslog_constructor()
 test_single_logger()
 test_multiple_loggers()
