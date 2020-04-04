@@ -31,10 +31,10 @@ struct SyslogLogger <: AbstractLogger
     message_limits::Dict{Any,Int}
     lck::Union{Nothing,ReentrantLock}
 
-    function SyslogLogger(ident::String, level=Logging.Info; facility::Symbol=:user, host::Union{Nothing,IPAddr}=nothing, port::Union{Nothing,Int}=nothing, tcp::Bool=false, lck::Union{Nothing,ReentrantLock}=nothing)
+    function SyslogLogger(ident::String, level=Logging.Info; facility::Symbol=:user, host::Union{Nothing,IPAddr,AbstractString}=nothing, port::Union{Nothing,Int}=nothing, tcp::Bool=false, lck::Union{Nothing,ReentrantLock}=nothing)
         syslog = (host === nothing) ? Syslog(facility) :
                  (port === nothing) ? Syslog(host, facility; tcp=tcp) :
-                 Syslog(host, port, facility; tcp=tcp)
+                 Syslog((typeof(host) <: AbstractString) ? getaddrinfo(host) : host, port, facility; tcp=tcp)
         new(ident, facility, syslog, level, Dict{Any,Int}(), lck)
     end
 end
