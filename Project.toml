@@ -4,7 +4,7 @@ keywords = ["syslog", "logger"]
 authors = ["Tanmay Mohapatra <tanmaykm@gmail.com>"]
 license = "MIT"
 desc = "Syslog Logger for Julia"
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 Syslogs = "cea106d9-e007-5e6c-ad93-58fe2094e9c4"
